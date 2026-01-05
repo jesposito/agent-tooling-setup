@@ -2,21 +2,59 @@
 
 **One-command setup for AI-assisted development**
 
-Integrates three powerful tools for working with AI coding agents:
+Integrates powerful tools for working with AI coding agents:
 
+### Core Tools (Always Available)
 - 🧠 **Empirica** - Epistemic self-assessment (track what AI knows/learns)
 - 📋 **Beads** - Git-backed issue tracker with dependency graphs
 - 🎨 **Perles** - Terminal UI with kanban boards and BQL query language
 
+### Optional AI Tools (Toggle On/Off)
+- 🧵 **Mem0** - Universal memory layer for AI agents
+- 💬 **gptme** - Personal AI assistant in your terminal
+- 📝 **OpenCommit** - AI-generated git commit messages
+- 🤖 **Aider** - AI pair programming (advanced users)
+- 🔍 **CodeRabbit CLI** - AI code review (pre-commit)
+
+See **[.agent-tools.yaml.template](.agent-tools.yaml.template)** for configuration options and **[.analysis-workspace/ANALYSIS.md](.analysis-workspace/ANALYSIS.md)** for detailed analysis of all tools.
+
 ## Quick Start
 
-### One-Line Installation
+### Choose Your Installation Mode
+
+**Two installation approaches available:**
+
+1. **Global Mode (Recommended)** - Install once, use everywhere
+   - Tools installed to `~/.agent-tooling/`
+   - Use across all your projects
+   - Unified CLI: `agent-tools` command
+   - Centralized configuration with per-project overrides
+
+2. **Per-Project Mode** - Self-contained installation
+   - Tools and config in each project
+   - Complete isolation per repository
+   - Traditional approach
+
+See **[INSTALLATION-MODES.md](INSTALLATION-MODES.md)** for detailed comparison and migration guide.
+
+### Global Installation (Recommended)
 
 ```bash
+# One-line install
+curl -fsSL https://raw.githubusercontent.com/jesposito/agent-tooling-setup/main/install-global.sh | bash
+
+# Then in any project:
+agent-tools init
+```
+
+### Per-Project Installation
+
+```bash
+# One-line install
 curl -fsSL https://raw.githubusercontent.com/jesposito/agent-tooling-setup/main/install.sh | bash
 ```
 
-### Manual Installation
+### Manual Installation (Per-Project)
 
 ```bash
 # Clone or download this repository
@@ -58,18 +96,35 @@ Claude will handle everything automatically! See **[CLAUDE_CODE.md](CLAUDE_CODE.
 
 ## What Gets Installed
 
-### Tools (if not already present)
+### Core Tools (if not already present)
 
 - **bd** (Beads CLI) - Task tracking
 - **perles** - Terminal UI
 - **empirica** - Epistemic tracking
 
+### Optional AI Tools (Configure in `.agent-tools.yaml`)
+
+- **mem0** - Memory layer (requires vector DB setup)
+- **gptme** - Terminal AI agent (with optional extras: browser, datascience, server)
+- **opencommit** (oco) - AI commit messages (manual or git hook mode)
+- **aider** - AI pair programming (advanced, auto-commits)
+- **coderabbit-cli** - AI code review (external service)
+
+**All optional tools are DISABLED by default** for safety. See [.agent-tools.yaml.template](.agent-tools.yaml.template) for configuration.
+
 ### Configuration Files
 
+**Global Mode:**
+- `~/.agent-tooling/` - All tools and shared config
+- `~/.agent-tooling/config/.agent-tools.yaml` - Global configuration
+- Per-project: `.agent-tools.local.yaml` (overrides global config)
+
+**Per-Project Mode:**
 - `.claude/CLAUDE.md` - Quick reference for agents
 - `AGENTS.md` - Workflow and "landing the plane" checklist
 - `.gitattributes` - Git merge strategy for Beads
 - `.beads/` - Beads database and config
+- `.agent-tools.yaml` - Project-specific configuration
 - `agent-instructions.md` - Comprehensive development guidelines (optional, use `--with-agent-instructions`)
   - Based on production-tested template
   - Includes customization comments
@@ -124,8 +179,46 @@ git push
 ## Requirements
 
 - Git repository (must be run in a git project)
-- macOS or Linux
-- For Empirica: Python 3.6+ with pip
+- **Platform**: macOS, Linux, or Windows (WSL recommended)
+  - See **[WINDOWS-NOTES.md](WINDOWS-NOTES.md)** for Windows compatibility
+- **Python**: 3.10-3.12 recommended (some tools require modern Python)
+- **Optional**: Go 1.16+ (for Beads/Perles from source)
+- **Optional**: Node.js 18+ (for OpenCommit if using AI commit messages)
+
+## Diagnostics & Maintenance
+
+### Health Check
+
+```bash
+# Run comprehensive diagnostics
+./agent-tools-doctor.sh
+
+# Check specific components
+./agent-tools-doctor.sh --check-python
+./agent-tools-doctor.sh --check-tools
+
+# Generate health report
+./agent-tools-doctor.sh --report
+```
+
+### Update Tools
+
+```bash
+# Update all tools safely
+./agent-tools-update.sh
+
+# Update specific tool
+./agent-tools-update.sh --tool beads
+
+# Dry run (see what would update)
+./agent-tools-update.sh --dry-run
+```
+
+**Features:**
+- Pre/post update health checks
+- Automatic backups before updates
+- Rollback capability if issues detected
+- Keeps last 5 backups
 
 ## Tool Documentation
 

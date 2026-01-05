@@ -1,0 +1,36 @@
+# Analysis workspace (cloned repos for deep dive)
+.analysis-workspace/
+
+# Migration backups (created by migrate-mode.sh)
+.agent-tools-migration-backup-*/
+.agent-tools-last-backup
+
+# User-specific configuration (users should copy from templates)
+.agent-tools.yaml
+.agent-tools.local.yaml
+
+# Environment variables (contains API keys)
+.env
+.env.local
+.env.*.local
+
+# Testing artifacts
+.agent-tooling-test/
+test-temp/
+
+# Self-dogfooding (this repo using its own tools)
+.beads/
+.claude/
+AGENTS.md
+.agent-tools.global-init
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

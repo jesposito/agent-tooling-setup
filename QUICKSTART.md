@@ -12,7 +12,40 @@ Done! See [CLAUDE_CODE.md](CLAUDE_CODE.md) for workflow examples. Otherwise, con
 
 ---
 
-## Installation (60 seconds)
+## Choose Installation Mode
+
+**Two approaches available:**
+
+1. **Global Mode** (Recommended) - Install once, use everywhere
+2. **Per-Project Mode** - Traditional self-contained install
+
+See [INSTALLATION-MODES.md](INSTALLATION-MODES.md) for detailed comparison.
+
+### Global Installation (Recommended - 60 seconds)
+
+```bash
+# 1. Download global installer
+curl -fsSL https://raw.githubusercontent.com/jesposito/agent-tooling-setup/main/install-global.sh -o install-global.sh
+
+# 2. Review it (IMPORTANT!)
+cat install-global.sh
+
+# 3. Run once to install globally
+chmod +x install-global.sh
+./install-global.sh
+
+# 4. Initialize in any project
+cd /path/to/your/project
+agent-tools init
+```
+
+**Benefits:**
+- Install once, use across all projects
+- Unified CLI: `agent-tools doctor`, `agent-tools update`
+- Centralized config with per-project overrides
+- Easy maintenance
+
+### Per-Project Installation (60 seconds)
 
 ```bash
 # 1. Download installer
@@ -112,6 +145,15 @@ git push
 | `empirica session-create --ai-id <id>` | Start session |
 | `empirica preflight-submit -` | Document initial state |
 | `empirica postflight-submit -` | Document learnings |
+
+### Diagnostics & Maintenance (Global or Per-Project)
+
+| Command | Purpose |
+|---------|---------|
+| `agent-tools doctor` (or `./agent-tools-doctor.sh`) | Run health check |
+| `agent-tools update` (or `./agent-tools-update.sh`) | Update all tools safely |
+| `agent-tools config` | Edit configuration |
+| `agent-tools init` | Initialize new project (global mode) |
 
 ## BQL Query Examples
 
