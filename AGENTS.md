@@ -12,6 +12,48 @@ bd close <id>         # Complete work
 bd sync               # Sync with git
 ```
 
+## Session Workflow with Mem0 (Optional)
+
+If you have Mem0 configured (see [docs/guides/MEM0-GUIDE.md](docs/guides/MEM0-GUIDE.md)):
+
+**Start of Session:**
+```python
+from mem0 import MemoryClient
+import os
+
+client = MemoryClient(api_key=os.getenv('MEM0_API_KEY'))
+user_id = "agent-tooling-setup"
+
+# Recall previous context
+results = client.search(
+    query="What was I working on? What decisions were made?",
+    user_id=user_id,
+    filters={"user_id": user_id},
+    limit=5
+)
+
+for mem in results['results']:
+    print(f"  - {mem['memory']}")
+```
+
+**During Work:**
+```python
+# Store key decisions or learnings
+client.add(
+    messages=[{"role": "user", "content": "Decided to use X approach because Y"}],
+    user_id=user_id
+)
+```
+
+**End of Session:**
+```python
+# Document what was accomplished
+client.add(
+    messages=[{"role": "user", "content": "Completed task ABC. Key learning: XYZ"}],
+    user_id=user_id
+)
+```
+
 ## Landing the Plane (Session Completion)
 
 **When ending a work session**, you MUST complete ALL steps below. Work is NOT complete until `git push` succeeds.

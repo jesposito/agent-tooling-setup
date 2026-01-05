@@ -35,20 +35,64 @@ This project creates the agent tooling setup itself.
 
 ## Development Environment
 
-- Platform: Windows (Git Bash)
+- Platform: Linux (Codespaces/Devcontainer)
 - Python: 3.12.1
-- Node.js: v20.10.0
+- Node.js: v24.11.1
 - Git: Available
+- Docker: Available
 
 ## Tools Status
 
-On this Windows machine:
-- ❌ Beads: Not available (Linux/macOS only)
-- ❌ Empirica: Not installed
-- ❌ Perles: Not available (Linux/macOS only)
+Current installation:
+- ✅ Beads: bd version 0.43.0
+- ✅ Empirica: empirica 1.2.3
+- ✅ Perles: version 0.5.2
+- ✅ gptme: v0.31.0 (with browser, datascience, server extras)
+- ✅ aider: 0.86.1
+- ✅ opencommit: 3.2.10
+- ✅ mem0: 1.0.1 (with Mem0 Platform integration)
 - ✅ Git: Available
 - ✅ Python: 3.12.1
-- ✅ Node.js: v20.10.0
+- ✅ Node.js: v24.11.1
+
+## Using Mem0 for Development
+
+Mem0 provides persistent memory across development sessions:
+
+**At start of session:**
+```python
+from mem0 import MemoryClient
+import os
+
+client = MemoryClient(api_key=os.getenv('MEM0_API_KEY'))
+user_id = "agent-tooling-setup-dev"
+
+# Recall previous work
+results = client.search(
+    query="What features were added? What issues remain?",
+    user_id=user_id,
+    filters={"user_id": user_id},
+    limit=5
+)
+```
+
+**During development:**
+```python
+# Document key decisions
+client.add(
+    messages=[{"role": "user", "content": "Added Mem0 integration. Chose Platform over self-hosted for simplicity."}],
+    user_id=user_id
+)
+```
+
+**End of session:**
+```python
+# Store session summary
+client.add(
+    messages=[{"role": "user", "content": "Completed: AI tools integration, Mem0 setup, comprehensive docs. Next: integration tests"}],
+    user_id=user_id
+)
+```
 
 ## Recent Accomplishments (This Session)
 
