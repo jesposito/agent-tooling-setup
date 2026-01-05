@@ -61,13 +61,27 @@ check_tool() {
 check_python_version() {
     section "Python Environment"
 
-    if ! command -v python3 &> /dev/null; then
-        error "Python 3 not found"
+    # Try python3 first, then python (Windows)
+    local python_cmd=""
+    if command -v python3 &> /dev/null; then
+        python_cmd="python3"
+    elif command -v python &> /dev/null; then
+        python_cmd="python"
+    else
+        error "Python not found"
         add_issue "Python 3 is required" "Install Python 3.10-3.12 from python.org"
         return 1
     fi
 
-    local python_version=$(python3 --version 2>&1 | awk '{print $2}')
+    local python_version=$($python_cmd --version 2>&1 | awk '{print $2}')
+
+    # Validate version is numeric
+    if [[ ! "$python_version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+        error "Could not determine Python version"
+        add_issue "Python version detection failed" "Check Python installation"
+        return 1
+    fi
+
     local major=$(echo "$python_version" | cut -d. -f1)
     local minor=$(echo "$python_version" | cut -d. -f2)
 
