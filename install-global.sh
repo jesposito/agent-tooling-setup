@@ -91,20 +91,38 @@ install_tools_globally() {
         warn "pipx not found, installing to user directory instead"
         info "Tip: Install pipx for better isolation: pip install --user pipx"
 
-        # Fallback to pip --user
-        pip3 install --user gptme aider-chat 2>&1 | grep -v "^  " || pip install --user gptme aider-chat 2>&1 | grep -v "^  " || true
+        # Fallback to pip --user (show progress, these are big packages)
+        info "Installing gptme (this may take 5-10 minutes)..."
+        if pip3 install --user gptme 2>&1 || pip install --user gptme 2>&1; then
+            success "gptme installed"
+        else
+            warn "gptme installation failed (optional)"
+        fi
+
+        info "Installing aider-chat (this may take 5-10 minutes)..."
+        if pip3 install --user aider-chat 2>&1 || pip install --user aider-chat 2>&1; then
+            success "aider installed"
+        else
+            warn "aider installation failed (optional)"
+        fi
     fi
 
     # Install Empirica
     info "Installing Empirica..."
-    pip3 install --user git+https://github.com/Nubaeon/empirica.git 2>&1 | grep -v "^  " || \
-    pip install --user git+https://github.com/Nubaeon/empirica.git 2>&1 | grep -v "^  " || true
-    success "Empirica installed"
+    if pip3 install --user git+https://github.com/Nubaeon/empirica.git 2>&1 || \
+       pip install --user git+https://github.com/Nubaeon/empirica.git 2>&1; then
+        success "Empirica installed"
+    else
+        warn "Empirica installation failed (optional)"
+    fi
 
     # Install Mem0
-    info "Installing Mem0 (minimal)..."
-    pip3 install --user mem0ai 2>&1 | grep -v "^  " || pip install --user mem0ai 2>&1 | grep -v "^  " || true
-    success "Mem0 installed"
+    info "Installing Mem0 (this may take a few minutes)..."
+    if pip3 install --user mem0ai 2>&1 || pip install --user mem0ai 2>&1; then
+        success "Mem0 installed"
+    else
+        warn "Mem0 installation failed (optional)"
+    fi
 
     # Install Beads
     info "Installing Beads..."
