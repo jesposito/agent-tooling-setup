@@ -45,7 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Project registration/unregistration
 
 #### Configuration System
-- **`.agent-tools.yaml.template`** - Comprehensive configuration template
+- **`agent-tools.yaml.template`** - Comprehensive configuration template
   - Core tools (Beads, Empirica, Perles)
   - Optional AI tools (Mem0, gptme, OpenCommit, Aider, CodeRabbit CLI)
   - Safety settings (all auto-commit features disabled by default)
@@ -101,7 +101,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Cache directories
   - Session files
   - Tool-specific temp files
-- **`.gitignore.template`** - Reference template for users
+- **`templates/gitignore.template`** - Reference template for users
 
 #### Safety & Security
 - **All auto-commit features disabled by default**
@@ -162,7 +162,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Core tool installation** - Beads, Perles, Empirica
 - **Basic installer script** - `install.sh`
 - **Configuration files**
-  - `.claude/CLAUDE.md` - Agent quick reference
+  - `docs/DEVELOPMENT.md` - Agent quick reference
   - `AGENTS.md` - Workflow checklist
   - `.gitattributes` - Beads merge strategy
 - **Documentation**
@@ -224,7 +224,7 @@ If you have an existing `.agent-tools.yaml`, review the new template:
 
 ```bash
 # Download new template
-curl -fsSL https://raw.githubusercontent.com/jesposito/agent-tooling-setup/main/.agent-tools.yaml.template -o .agent-tools.yaml.new
+curl -fsSL https://raw.githubusercontent.com/jesposito/agent-tooling-setup/main/agent-tools.yaml.template -o .agent-tools.yaml.new
 
 # Compare with your config
 diff .agent-tools.yaml .agent-tools.yaml.new

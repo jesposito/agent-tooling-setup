@@ -6,7 +6,7 @@ This project creates the agent tooling setup itself.
 
 ### Completed ✅
 - [x] Deep dive analysis of 5 AI tools (ANALYSIS.md - 10,000+ words)
-- [x] Configuration system design (.agent-tools.yaml.template)
+- [x] Configuration system design (agent-tools.yaml.template)
 - [x] Auto-gitignore management (update_gitignore function)
 - [x] Diagnostic & health check system (agent-tools-doctor.sh)
 - [x] Safe update system (agent-tools-update.sh)
@@ -82,7 +82,7 @@ On this Windows machine:
 - **Lines of code added**: ~3,500+ lines
 - **New scripts**: 1 (migrate-mode.sh ~600 lines)
 - **Documentation files created**: 2 (TESTING-CHECKLIST.md, CHANGELOG.md)
-- **Documentation files updated**: 4 (README.md, QUICKSTART.md, .claude/CLAUDE.md, .gitignore)
+- **Documentation files updated**: 4 (README.md, QUICKSTART.md, docs/DEVELOPMENT.md, .gitignore)
 - **Scripts enhanced**: 2 (install-global.sh created, agent-tools-doctor.sh fixed)
 - **Commits**: 3 total this session
 - **Platform compatibility**: Improved (Windows fallbacks added)

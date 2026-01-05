@@ -79,7 +79,7 @@ EOF
     # Inform user about what SHOULD be committed
     info "Files that will be committed to git:"
     echo "  ✓ .beads/                 - Task database"
-    echo "  ✓ .claude/CLAUDE.md       - Agent instructions"
+    echo "  ✓ docs/DEVELOPMENT.md       - Agent instructions"
     echo "  ✓ AGENTS.md               - Workflow documentation"
     echo "  ✓ .gitattributes          - Merge strategy"
     echo "  ✓ agent-instructions.md   - Dev guidelines (if created)"
@@ -316,8 +316,8 @@ setup_templates() {
     info "Setting up configuration files..."
 
     # Create CLAUDE.md if it doesn't exist
-    if [ ! -f ".claude/CLAUDE.md" ]; then
-        cat > .claude/CLAUDE.md << 'EOF'
+    if [ ! -f "docs/DEVELOPMENT.md" ]; then
+        cat > docs/DEVELOPMENT.md << 'EOF'
 # Agent Tooling - Integrated Development Environment
 
 This project uses three integrated tools for AI-assisted development:
@@ -389,9 +389,9 @@ ctrl+space
 
 See [agent-instructions.md](../agent-instructions.md) for complete development guidelines (if present).
 EOF
-        success "Created .claude/CLAUDE.md"
+        success "Created docs/DEVELOPMENT.md"
     else
-        warn ".claude/CLAUDE.md already exists, skipping"
+        warn "docs/DEVELOPMENT.md already exists, skipping"
     fi
 
     # AGENTS.md is created by bd init, so we don't need to create it
@@ -534,14 +534,14 @@ main() {
     success "Agent tooling is now configured for this project"
     echo ""
     info "Next steps:"
-    echo "  1. Review configuration in .claude/CLAUDE.md"
+    echo "  1. Review configuration in docs/DEVELOPMENT.md"
     echo "  2. Review workflow in AGENTS.md"
     echo "  3. Start a session: empirica session-create --ai-id claude-code --output json"
     echo "  4. Create your first task: bd create 'Task description'"
     echo "  5. View your board: perles"
     echo ""
     info "Add .beads/ to your git repository:"
-    echo "  git add .beads/ .claude/CLAUDE.md AGENTS.md .gitattributes"
+    echo "  git add .beads/ docs/DEVELOPMENT.md AGENTS.md .gitattributes"
     echo "  git commit -m 'Add agent tooling setup'"
     echo ""
 }

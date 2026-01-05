@@ -1,43 +1,52 @@
-# Analysis workspace (cloned repos for deep dive)
-.analysis-workspace/
+# ============================================================================
+# STRICT DOT FILE POLICY: No dot files or directories in repository
+# ============================================================================
+# Exception: .gitignore and .git/ (required by Git)
+# All configuration uses non-dot names (e.g., agent-tools.yaml.template)
+# ============================================================================
 
-# Migration backups (created by migrate-mode.sh)
-.agent-tools-migration-backup-*/
-.agent-tools-last-backup
+# Ignore ALL dot files and directories (except .gitignore itself)
+.*
+!.gitignore
 
-# User-specific configuration (users should copy from templates)
+# User-specific configuration files
+*.local.yaml
+*.local.yml
+agent-tools.yaml
 .agent-tools.yaml
 .agent-tools.local.yaml
 
-# Environment variables (contains API keys)
-.env
-.env.local
-.env.*.local
+# Environment variables (API keys, secrets)
+*.env
+*.env.*
+.env*
 
-# Testing artifacts
-.agent-tooling-test/
+# Testing and temporary files
 test-temp/
-
-# Self-dogfooding (this repo using its own tools)
-.beads/
-.claude/*
-!.claude/CLAUDE.md
-AGENTS.md
-.agent-tools.global-init
+*-test/
+*.tmp
+*.log
 
 # Development/session documentation (keep local only)
 SESSION-SUMMARY.md
 ENHANCEMENTS-SUMMARY.md
 agent-instructions.md
 CLAUDE_CODE.md
+AGENTS.md
+
+# Migration and backup artifacts
+*-backup-*/
+*-last-backup
+.agent-tools-migration-backup-*/
+.agent-tools-last-backup
 
 # OS-specific
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Editor
-.vscode/
-.idea/
+# Editor and IDE
 *.swp
 *.swo
 *~
+*.bak

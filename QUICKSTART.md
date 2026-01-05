@@ -194,7 +194,7 @@ type = epic expand down depth *
 
 - Full docs: See README.md
 - Agent workflow: See AGENTS.md (created in your project)
-- Configuration: `.claude/CLAUDE.md` (created in your project)
+- Configuration: `docs/DEVELOPMENT.md` (created in your project)
 
 ## Uninstall
 

@@ -363,7 +363,7 @@ src/
 1. Remove the `[CUSTOMIZE]` markers
 2. Remove the comment block at the top
 3. Commit to your repository
-4. Reference in your `.claude/CLAUDE.md`
+4. Reference in your `docs/DEVELOPMENT.md`
 5. Share with your team
 
 ## Questions to Ask Yourself

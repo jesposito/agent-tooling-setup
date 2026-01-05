@@ -183,7 +183,7 @@ check_project_structure() {
 
     [ -d ".beads" ] && success ".beads/ directory exists" || { error ".beads/ missing"; add_issue "Beads not initialized" "Run: bd init"; }
     [ -d ".claude" ] && success ".claude/ directory exists" || warn ".claude/ missing (run install.sh)"
-    [ -f ".claude/CLAUDE.md" ] && success ".claude/CLAUDE.md exists" || warn ".claude/CLAUDE.md missing"
+    [ -f "docs/DEVELOPMENT.md" ] && success "docs/DEVELOPMENT.md exists" || warn "docs/DEVELOPMENT.md missing"
     [ -f "AGENTS.md" ] && success "AGENTS.md exists" || warn "AGENTS.md missing"
     [ -f ".gitattributes" ] && success ".gitattributes exists" || warn ".gitattributes missing"
 }

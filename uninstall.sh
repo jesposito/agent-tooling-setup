@@ -61,7 +61,7 @@ done
 # Files and directories to remove
 FILES=(
     ".beads"
-    ".claude/CLAUDE.md"
+    "docs/DEVELOPMENT.md"
     "AGENTS.md"
     ".gitattributes"
 )

@@ -177,7 +177,7 @@ create_global_config() {
     section "Creating Global Configuration"
 
     # Copy configuration template
-    local template_path="$(dirname "$0")/.agent-tools.yaml.template"
+    local template_path="$(dirname "$0")/agent-tools.yaml.template"
     if [ -f "$template_path" ]; then
         cp "$template_path" "$CONFIG_DIR/.agent-tools.yaml"
         success "Created global configuration"
@@ -382,9 +382,9 @@ else
     warn "Beads not available - created directory placeholder"
 fi
 
-# Create .claude/CLAUDE.md
-if [ ! -f "$PROJECT_ROOT/.claude/CLAUDE.md" ]; then
-    cat > "$PROJECT_ROOT/.claude/CLAUDE.md" << 'CLAUDE_EOF'
+# Create docs/DEVELOPMENT.md
+if [ ! -f "$PROJECT_ROOT/docs/DEVELOPMENT.md" ]; then
+    cat > "$PROJECT_ROOT/docs/DEVELOPMENT.md" << 'CLAUDE_EOF'
 # Agent Tooling - Integrated Development Environment
 
 This project uses agent tooling in **global mode**.
@@ -434,7 +434,7 @@ perles                      # Launch TUI
    - See AGENTS.md for mandatory landing-the-plane workflow
 
 CLAUDE_EOF
-    success "Created .claude/CLAUDE.md"
+    success "Created docs/DEVELOPMENT.md"
 fi
 
 # Create AGENTS.md

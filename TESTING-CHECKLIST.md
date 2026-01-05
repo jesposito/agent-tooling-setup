@@ -277,7 +277,7 @@ Test with `.agent-tools.yaml` configuration:
   ```
 
 - [ ] **Claude Code Integration**
-  - [ ] Can read `.claude/CLAUDE.md`
+  - [ ] Can read `docs/DEVELOPMENT.md`
   - [ ] Can read `AGENTS.md`
   - [ ] Can read `agent-instructions.md` (if created)
   - [ ] Instructions work as expected

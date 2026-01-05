@@ -33,7 +33,7 @@ The agent-tooling-setup supports two installation modes to fit different workflo
 
 your-project/                  # Your actual project
 ├── .agent-tools.link          # Symlink to global config
-├── .claude/CLAUDE.md          # Agent instructions (committed)
+├── docs/DEVELOPMENT.md          # Agent instructions (committed)
 ├── AGENTS.md                  # Workflow docs (committed)
 └── ... (your code)
 ```
@@ -57,7 +57,7 @@ cd ~/projects/my-app
 agent-tools init
 
 # This creates:
-# - .claude/CLAUDE.md
+# - docs/DEVELOPMENT.md
 # - AGENTS.md
 # - .agent-tools.link -> ~/.agent-tooling/projects/my-app
 # - Adds entries to .gitignore
@@ -105,7 +105,7 @@ perles                          # Shows kanban for this project
 ```
 your-project/
 ├── .beads/                    # Beads database
-├── .claude/CLAUDE.md          # Agent instructions
+├── docs/DEVELOPMENT.md          # Agent instructions
 ├── AGENTS.md                  # Workflow docs
 ├── .agent-tools/              # Local installation
 │   ├── venv/                  # Python virtual environment
@@ -185,7 +185,7 @@ agent-tools migrate-to-global
 # - Remove .agent-tools/ directory
 # - Create .agent-tools.link
 # - Update .gitignore
-# - Keep AGENTS.md, .claude/CLAUDE.md
+# - Keep AGENTS.md, docs/DEVELOPMENT.md
 ```
 
 ### From Global to Per-Project
