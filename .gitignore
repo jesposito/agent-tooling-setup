@@ -20,9 +20,16 @@ test-temp/
 
 # Self-dogfooding (this repo using its own tools)
 .beads/
-.claude/
+.claude/*
+!.claude/CLAUDE.md
 AGENTS.md
 .agent-tools.global-init
+
+# Development/session documentation (keep local only)
+SESSION-SUMMARY.md
+ENHANCEMENTS-SUMMARY.md
+agent-instructions.md
+CLAUDE_CODE.md
 
 # OS-specific
 .DS_Store
