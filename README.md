@@ -84,7 +84,7 @@ cd /path/to/your/project
 
 ### 🤖 Using Claude Code? Even Easier!
 
-If you have [Claude Code](https://claude.ai/claude-code) installed in VS Code, just ask:
+If you have a Claude Code extension installed in VS Code, just ask:
 
 ```
 Install the agent tooling setup from https://github.com/jesposito/agent-tooling-setup
@@ -92,7 +92,13 @@ Install the agent tooling setup from https://github.com/jesposito/agent-tooling-
 Run the installer to set up Empirica, Beads, and Perles for this project.
 ```
 
-Claude will handle everything automatically! See **[CLAUDE_CODE.md](CLAUDE_CODE.md)** for full details and example prompts.
+Claude will handle everything automatically!
+
+**Supported Extensions:**
+- [Anthropic Claude Code](https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code) (official)
+- [Claude Code YOLO](https://marketplace.visualstudio.com/items?itemName=yuanzhixiang.claude-code-yolo) (community)
+
+Both extensions are fully supported with optimized VS Code settings. See **[CLAUDE_CODE.md](CLAUDE_CODE.md)** for full details and example prompts.
 
 ## What Gets Installed
 
@@ -275,7 +281,9 @@ type = epic expand down depth *
 
 ### For AI Agents (Claude Code, Cursor, etc.)
 
-**Claude Code users**: See [CLAUDE_CODE.md](CLAUDE_CODE.md) for installation prompts and workflow examples.
+**Claude Code users**: Both [Anthropic Claude Code](https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code) and [Claude Code YOLO](https://marketplace.visualstudio.com/items?itemName=yuanzhixiang.claude-code-yolo) are fully supported. See [CLAUDE_CODE.md](CLAUDE_CODE.md) for installation prompts and workflow examples.
+
+This project includes VS Code settings (`.vscode/settings.json`) that automatically configure both extensions with the right context files.
 
 Add this to your agent's context:
 

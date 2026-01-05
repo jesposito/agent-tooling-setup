@@ -2,11 +2,15 @@
 
 ## 🤖 Using Claude Code? (10 seconds)
 
-If you have [Claude Code](https://claude.ai/claude-code) installed, just ask:
+If you have a Claude Code extension installed in VS Code, just ask:
 
 ```
 Install the agent tooling setup from https://github.com/jesposito/agent-tooling-setup
 ```
+
+**Supported Extensions:**
+- [Anthropic Claude Code](https://marketplace.visualstudio.com/items?itemName=anthropic.claude-code) (official)
+- [Claude Code YOLO](https://marketplace.visualstudio.com/items?itemName=yuanzhixiang.claude-code-yolo) (community)
 
 Done! See [CLAUDE_CODE.md](CLAUDE_CODE.md) for workflow examples. Otherwise, continue below for manual installation.
 
