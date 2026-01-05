@@ -21,6 +21,70 @@ success() { echo -e "${GREEN}✓${NC} $1"; }
 warn() { echo -e "${YELLOW}⚠${NC} $1"; }
 error() { echo -e "${RED}✗${NC} $1"; exit 1; }
 
+# Auto-update .gitignore with agent tooling entries
+update_gitignore() {
+    local gitignore_file=".gitignore"
+    local marker_start="# === Agent Tooling - Auto-managed (DO NOT EDIT) ==="
+    local marker_end="# === End Agent Tooling ==="
+
+    info "Updating .gitignore..."
+
+    # Create .gitignore if it doesn't exist
+    if [ ! -f "$gitignore_file" ]; then
+        touch "$gitignore_file"
+        info "Created .gitignore"
+    fi
+
+    # Remove old agent tooling section if it exists
+    if grep -q "$marker_start" "$gitignore_file" 2>/dev/null; then
+        # Remove everything between markers
+        sed -i.bak "/$marker_start/,/$marker_end/d" "$gitignore_file"
+        rm -f "${gitignore_file}.bak"
+    fi
+
+    # Add new agent tooling section
+    cat >> "$gitignore_file" << 'EOF'
+
+# === Agent Tooling - Auto-managed (DO NOT EDIT) ===
+# Installation artifacts
+.analysis-workspace/
+.agent-tooling-temp/
+.agent-tooling-cache/
+agent-tooling-install.log
+
+# API keys and secrets (CRITICAL - never commit!)
+.env
+.env.local
+.env.*.local
+.agent-tools.secrets.yaml
+
+# Tool-specific temp/cache
+.mem0-cache/
+.gptme-cache/
+.gptme-sessions/
+.aider-cache/
+.coderabbit-cache/
+
+# Session files (may contain sensitive data)
+.empirica-sessions/
+
+# Per-project installation (if using local mode)
+.agent-tools/
+
+# === End Agent Tooling ===
+EOF
+
+    success "Updated .gitignore with agent tooling entries"
+
+    # Inform user about what SHOULD be committed
+    info "Files that will be committed to git:"
+    echo "  ✓ .beads/                 - Task database"
+    echo "  ✓ .claude/CLAUDE.md       - Agent instructions"
+    echo "  ✓ AGENTS.md               - Workflow documentation"
+    echo "  ✓ .gitattributes          - Merge strategy"
+    echo "  ✓ agent-instructions.md   - Dev guidelines (if created)"
+}
+
 # Check if we're in a git repository
 check_git_repo() {
     if ! git rev-parse --git-dir > /dev/null 2>&1; then
@@ -460,6 +524,7 @@ main() {
     init_beads
     setup_claude_dir
     setup_templates
+    update_gitignore
 
     echo ""
     echo "╔════════════════════════════════════════════════════════╗"

@@ -1,0 +1,285 @@
+# Agent Tooling Configuration Template
+# Copy this file to .agent-tools.yaml and customize for your needs
+# Run ./install.sh to apply configuration
+
+version: "1.0"
+
+# ============================================================================
+# CORE TOOLS (Always Installed)
+# ============================================================================
+core:
+  beads:
+    enabled: true
+    auto_sync: true          # Run bd sync automatically in workflow scripts
+
+  empirica:
+    enabled: true
+    telemetry: false        # Disable posthog telemetry
+
+  perles:
+    enabled: true
+
+# ============================================================================
+# OPTIONAL AI TOOLS (Toggle On/Off)
+# ============================================================================
+ai_tools:
+  # --------------------------------------------------------------------------
+  # Mem0 - Universal Memory Layer for AI Agents
+  # --------------------------------------------------------------------------
+  # Provides persistent memory across sessions
+  # ⚠️  Requires vector database setup (Qdrant by default)
+  # 📊 Resource usage: 100MB-1GB+ depending on memory size
+  # 💰 API costs: Moderate (memory operations use LLM tokens)
+  #
+  mem0:
+    enabled: false
+
+    # Optional installation extras
+    install_extras:
+      graph: false           # Neo4j, Memgraph, Kuzu support
+      vector_stores: false   # ChromaDB, Pinecone, Weaviate, etc.
+      llms: false            # Groq, Together, Ollama, Gemini support
+
+    # Vector store configuration
+    vector_store:
+      provider: "qdrant"     # qdrant, chroma, pinecone, weaviate, etc.
+      config:
+        host: "localhost"
+        port: 6333
+
+    # LLM configuration for memory operations
+    llm:
+      provider: "openai"     # openai, anthropic, ollama, etc.
+      model: "gpt-4o-mini"
+
+  # --------------------------------------------------------------------------
+  # gptme - Personal AI Assistant in Your Terminal
+  # --------------------------------------------------------------------------
+  # Terminal-based AI agent with tools for coding, browsing, and more
+  # ⚠️  Has full shell access - security consideration
+  # 📊 Resource usage: ~200MB base, ~500MB+ with extras
+  # 💰 API costs: Variable depending on usage
+  #
+  gptme:
+    enabled: false
+
+    # Optional installation extras
+    install_extras:
+      browser: false         # ⚠️  Playwright - downloads browsers (~300MB)
+      datascience: false     # matplotlib, pandas, numpy
+      server: false          # Flask web UI
+      youtube: false         # YouTube transcript API
+      tts: false             # Text-to-speech support
+
+    # Configuration
+    config:
+      default_provider: "openai"
+      default_model: "gpt-4o-mini"
+
+  # --------------------------------------------------------------------------
+  # OpenCommit - AI-Generated Git Commit Messages
+  # --------------------------------------------------------------------------
+  # Generates conventional commit messages using AI
+  # ⚠️  Adds API cost to every commit
+  # 💰 API costs: Low (~$0.001-0.01 per commit)
+  #
+  opencommit:
+    enabled: false
+
+    # Configuration (stored in ~/.opencommit)
+    config:
+      ai_provider: "openai"  # openai, anthropic, ollama, gemini, azure, etc.
+      model: "gpt-4o-mini"
+
+      # Commit message style
+      emoji: false           # Enable gitmoji support
+      description: true      # Add detailed descriptions
+      commit_style: "conventional"  # conventional, gitmoji, or blank
+
+      # Git hook integration
+      install_git_hook: false  # ⚠️  DO NOT enable without team agreement
+                              # Use manual `oco` command instead
+
+      # Language and locale
+      language: "en"         # en, zh, es, fr, de, etc.
+
+  # --------------------------------------------------------------------------
+  # Aider - AI Pair Programming in Your Terminal
+  # --------------------------------------------------------------------------
+  # Advanced AI coding agent with auto-commit and full codebase understanding
+  # ⚠️  ADVANCED USERS ONLY - Manipulates git automatically
+  # ⚠️  Can create unwanted commits
+  # 📊 Resource usage: ~200MB+ dependencies
+  # 💰 API costs: HIGH - codebase mapping uses many tokens
+  #
+  aider:
+    enabled: false
+
+    # Configuration
+    config:
+      auto_commit: false     # ⚠️  Disable auto-commit by default
+      model: "gpt-4o"
+      dark_mode: true
+
+    # Optional extras
+    install_extras:
+      browser: false         # Playwright for web browsing
+
+    # Safety settings
+    safety:
+      require_confirmation: true   # Ask before each operation
+      backup_before_edit: true     # Create git stash before AI edits
+
+  # --------------------------------------------------------------------------
+  # CodeRabbit CLI - AI Code Review
+  # --------------------------------------------------------------------------
+  # Pre-commit code review service
+  # ⚠️  CLOSED SOURCE - Sends code to external service
+  # ⚠️  Privacy implications - review before enabling
+  # 💰 Free tier with rate limits
+  #
+  coderabbit_cli:
+    enabled: false
+
+    # Privacy and security
+    privacy_warning_acknowledged: false  # Must set to true to install
+
+    # Only install if you:
+    # - Understand code is sent to external service
+    # - Have reviewed CodeRabbit privacy policy
+    # - Are comfortable with rate limits
+    # - Trust the service provider
+
+# ============================================================================
+# API KEY MANAGEMENT
+# ============================================================================
+# DO NOT commit real API keys to git!
+# Use environment variables or .env file instead
+#
+api_keys:
+  # Load from .env file (recommended)
+  use_env_file: true
+  env_file_path: ".env"      # Path to .env file (add to .gitignore)
+
+  # Required API keys (set in .env file):
+  # OPENAI_API_KEY=sk-...
+  # ANTHROPIC_API_KEY=sk-ant-...
+  # GEMINI_API_KEY=...
+  # GROQ_API_KEY=...
+
+# ============================================================================
+# GIT WORKFLOW SETTINGS
+# ============================================================================
+git:
+  # Disable all auto-commit features by default
+  auto_commit_tools: false
+
+  # AI-generated commit messages
+  commit_message_ai: false   # Enable to use OpenCommit
+
+  # Pre-commit code review
+  pre_commit_review: false   # Enable to use CodeRabbit CLI
+
+  # Workflow enforcement
+  require_clean_state: true  # Require clean git state before AI operations
+
+  # Backup strategy
+  auto_stash: true           # Auto-stash changes before AI edits
+
+# ============================================================================
+# RESOURCE LIMITS
+# ============================================================================
+resources:
+  # Memory limits
+  max_memory_mb: 2048        # Max memory for vector stores
+
+  # Codebase size warnings
+  warn_on_large_codebase: true
+  large_codebase_threshold: 100000  # lines of code
+
+  # Token usage warnings
+  warn_on_expensive_operation: true
+  expensive_operation_threshold: 10000  # tokens
+
+# ============================================================================
+# SAFETY & SECURITY SETTINGS
+# ============================================================================
+safety:
+  # Tools that require explicit confirmation
+  require_confirmation:
+    - aider               # Confirm before using Aider (git manipulation)
+    - coderabbit_cli      # Confirm before sending code externally
+
+  # Sandbox mode (future feature)
+  sandbox_mode: false     # Run AI agents in restricted environment
+
+  # Backup before AI operations
+  backup_before_ai: true  # Create git stash before AI edits
+
+  # Shell access restrictions (for gptme, aider)
+  restrict_shell_access: false  # Limit shell commands AI can run
+  allowed_commands: []    # Whitelist of allowed commands (if restricted)
+
+# ============================================================================
+# TELEMETRY & ANALYTICS
+# ============================================================================
+telemetry:
+  # Disable telemetry in tools that support it
+  posthog_disable: true   # Aider, Mem0 use posthog
+
+  # Error reporting
+  anonymize_errors: true  # Strip sensitive data from error reports
+
+  # Usage analytics (local only)
+  track_local_usage: false  # Track tool usage locally
+
+# ============================================================================
+# PLATFORM-SPECIFIC SETTINGS
+# ============================================================================
+platform:
+  # Python version (auto-detected, can override)
+  python_version: "auto"  # auto, 3.10, 3.11, 3.12
+
+  # Installation method preferences
+  prefer_pipx: true       # Use pipx for CLI tools (isolated environments)
+  prefer_user_install: true  # Use --user flag for pip installs
+
+  # Node.js (for OpenCommit)
+  node_version: "auto"    # auto, or specific version
+
+# ============================================================================
+# RECOMMENDED CONFIGURATIONS BY USE CASE
+# ============================================================================
+#
+# BEGINNER (New to AI agents):
+#   core: all enabled
+#   ai_tools.opencommit: enabled (manual mode, no git hook)
+#   ai_tools.mem0: disabled
+#   ai_tools.gptme: disabled
+#   ai_tools.aider: disabled
+#   ai_tools.coderabbit_cli: disabled
+#
+# INTERMEDIATE (Comfortable with AI):
+#   core: all enabled
+#   ai_tools.opencommit: enabled
+#   ai_tools.gptme: enabled (base install only)
+#   ai_tools.mem0: enabled (minimal config)
+#   ai_tools.aider: disabled
+#   ai_tools.coderabbit_cli: disabled
+#
+# ADVANCED (Power user):
+#   core: all enabled
+#   ai_tools: all enabled with appropriate safety settings
+#   git.auto_commit_tools: false (stay in control)
+#   safety.require_confirmation: true
+#   safety.backup_before_ai: true
+#
+# TEAM (Multi-developer projects):
+#   core.beads: enabled
+#   core.empirica: per-developer choice
+#   core.perles: per-developer choice
+#   ai_tools.opencommit: enabled (team standard, no git hook)
+#   ai_tools.aider: disabled (conflicts with team workflow)
+#   Other ai_tools: per-developer choice
+#
+# ============================================================================

@@ -1,0 +1,39 @@
+# ============================================================================
+# Agent Tooling - Auto-generated .gitignore entries
+# ============================================================================
+# This file is automatically merged into your .gitignore by the installer
+# DO NOT manually edit these entries - they will be regenerated
+# ============================================================================
+
+# Agent Tooling - Installation artifacts
+.analysis-workspace/
+.agent-tooling-temp/
+.agent-tooling-cache/
+agent-tooling-install.log
+
+# Agent Tooling - API keys and secrets (CRITICAL - never commit!)
+.env
+.env.local
+.env.*.local
+.agent-tools.secrets.yaml
+
+# Agent Tooling - Tool-specific temp files
+.mem0-cache/
+.gptme-cache/
+.aider-cache/
+.coderabbit-cache/
+
+# Agent Tooling - Session files (may contain sensitive data)
+.empirica-sessions/
+.gptme-sessions/
+
+# ============================================================================
+# Files that SHOULD be committed (DO NOT add to .gitignore):
+# ============================================================================
+# .beads/                    - Beads task database
+# .claude/CLAUDE.md          - Agent instructions
+# AGENTS.md                  - Workflow documentation
+# .gitattributes             - Beads merge strategy
+# agent-instructions.md      - Development guidelines (optional)
+# .agent-tools.yaml          - Configuration (if not sensitive)
+# ============================================================================
