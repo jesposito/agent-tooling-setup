@@ -158,8 +158,64 @@ init_beads() {
     fi
 
     if ! check_installed bd; then
-        warn "Beads (bd) not installed, skipping initialization"
-        warn "Run 'bd init' manually after installing Beads"
+        warn "Beads (bd) not installed, creating minimal .beads directory"
+        warn "Run 'bd init' manually after installing Beads to complete setup"
+
+        # Create minimal beads directory structure
+        mkdir -p .beads
+
+        # Create basic AGENTS.md file
+        if [ ! -f "AGENTS.md" ]; then
+            cat > AGENTS.md << 'EOF'
+# Agent Workflow
+
+## Landing the Plane
+
+At the end of every development session, you **MUST** complete this checklist:
+
+### 1. File Issues for Incomplete Work
+- [ ] Create beads for any remaining TODOs or incomplete work
+- [ ] Document blockers or dependencies
+- [ ] Note any technical debt incurred
+
+### 2. Run Quality Gates
+- [ ] All tests pass
+- [ ] Linters pass
+- [ ] Build succeeds
+- [ ] No new warnings
+
+### 3. Update Beads Status
+- [ ] Close completed beads: `bd close <id>`
+- [ ] Update in-progress beads with current state
+- [ ] Link related beads with dependencies
+
+### 4. Sync Everything
+```bash
+bd sync                              # Sync beads with git
+empirica postflight-submit -         # Document learnings
+git add .                            # Stage changes
+git commit -m "Descriptive message"  # Commit
+git push                             # Push to remote (MANDATORY)
+```
+
+### 5. Verify
+- [ ] All changes are pushed
+- [ ] CI/CD builds are green
+- [ ] No uncommitted changes remain
+
+---
+
+**CRITICAL**: Work is not complete until `git push` succeeds and CI passes.
+
+Never leave a session with:
+- Uncommitted changes
+- Unpushed commits
+- Failing tests
+- Undocumented incomplete work
+EOF
+        fi
+
+        success "Created minimal Beads structure"
         return
     fi
 
