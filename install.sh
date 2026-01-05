@@ -214,6 +214,37 @@ install_empirica() {
     fi
 }
 
+# Check AI tools status (optional tools from .agent-tools.yaml)
+check_ai_tools() {
+    echo ""
+    info "Checking optional AI tools..."
+
+    local has_any=false
+
+    # Check gptme
+    if check_installed gptme; then
+        success "gptme $(gptme --version 2>&1 | head -1 | awk '{print $2}')"
+        has_any=true
+    fi
+
+    # Check aider
+    if check_installed aider; then
+        success "aider $(aider --version 2>&1 | head -1)"
+        has_any=true
+    fi
+
+    # Check opencommit
+    if check_installed oco; then
+        success "opencommit $(oco --version 2>&1)"
+        has_any=true
+    fi
+
+    if [ "$has_any" = false ]; then
+        info "No AI tools detected (optional)"
+        info "See docs/guides/AI-TOOLS-GUIDE.md to install gptme, aider, or opencommit"
+    fi
+}
+
 # Initialize Beads in current project
 init_beads() {
     if [ -d ".beads" ]; then
@@ -517,6 +548,7 @@ main() {
         install_beads
         install_perles
         install_empirica
+        check_ai_tools
         echo ""
     fi
 

@@ -1,0 +1,61 @@
+{
+  "// Configuration for Claude Code extensions": "",
+  "// - anthropic.claude-code (official Anthropic extension)": "",
+  "// - yuanzhixiang.claude-code-yolo (community extension)": "",
+
+  "files.associations": {
+    "*.md": "markdown",
+    ".agent-tools.yaml": "yaml",
+    ".agent-tools.local.yaml": "yaml",
+    ".tool-versions": "plaintext"
+  },
+
+  "// Exclude from search/watch to improve performance": "",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.beads/beads.db-shm": true,
+    "**/.beads/beads.db-wal": true
+  },
+
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/**": true,
+    "**/.beads/beads.db-shm": true,
+    "**/.beads/beads.db-wal": true
+  },
+
+  "git.ignoreLimitWarning": true,
+
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.defaultProfile.osx": "bash",
+
+  "markdown.preview.breaks": true,
+  "markdown.preview.linkify": true,
+
+  "// Agent tooling context files (both extensions)": "",
+  "claude-code.contextFiles": [
+    "docs/DEVELOPMENT.md",
+    "AGENTS.md",
+    ".agent-tools.yaml",
+    "README.md"
+  ],
+
+  "claude-code-yolo.contextFiles": [
+    "docs/DEVELOPMENT.md",
+    "AGENTS.md",
+    ".agent-tools.yaml",
+    "README.md"
+  ],
+
+  "// Custom instructions for Claude Code": "",
+  "claude-code.customInstructions": "This project uses agent-tooling-setup with Empirica, Beads, Perles, gptme, opencommit, and aider. See docs/DEVELOPMENT.md for workflow and AGENTS.md for session checklist.",
+  "claude-code-yolo.customInstructions": "This project uses agent-tooling-setup with Empirica, Beads, Perles, gptme, opencommit, and aider. See docs/DEVELOPMENT.md for workflow and AGENTS.md for session checklist.",
+
+  "search.exclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/.beads/beads.db-shm": true,
+    "**/.beads/beads.db-wal": true
+  }
+}

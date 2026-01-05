@@ -116,7 +116,10 @@ Both extensions are fully supported with optimized VS Code settings. See **[CLAU
 - **aider** - AI pair programming (advanced, auto-commits)
 - **coderabbit-cli** - AI code review (external service)
 
-**All optional tools are DISABLED by default** for safety. See [agent-tools.yaml.template](agent-tools.yaml.template) for configuration.
+**All optional tools are DISABLED by default** for safety. See:
+- [agent-tools.yaml.template](agent-tools.yaml.template) - Configuration options
+- [docs/guides/AI-TOOLS-GUIDE.md](docs/guides/AI-TOOLS-GUIDE.md) - Complete usage guide
+- [docs/examples/INTEGRATION-WORKFLOW.md](docs/examples/INTEGRATION-WORKFLOW.md) - Real-world workflow example
 
 ### Configuration Files
 
