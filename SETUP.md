@@ -37,7 +37,7 @@ git push -u origin main
 After pushing, update the README with your actual GitHub username:
 
 ```bash
-# Edit README.md and replace YOUR_GITHUB_USERNAME with your actual username
+# Edit README.md and replace jesposito with your actual username
 # Then commit and push:
 git add README.md
 git commit -m "Update installation URLs with actual username"
@@ -48,7 +48,7 @@ Or do it in one command:
 
 ```bash
 # Replace YOUR_ACTUAL_USERNAME below
-sed -i 's/YOUR_GITHUB_USERNAME/YOUR_ACTUAL_USERNAME/g' README.md
+sed -i 's/jesposito/YOUR_ACTUAL_USERNAME/g' README.md
 git add README.md
 git commit -m "Update installation URLs"
 git push

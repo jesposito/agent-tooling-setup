@@ -13,14 +13,14 @@ Integrates three powerful tools for working with AI coding agents:
 ### One-Line Installation
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/agent-tooling-setup/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/jesposito/agent-tooling-setup/main/install.sh | bash
 ```
 
 ### Manual Installation
 
 ```bash
 # Clone or download this repository
-git clone https://github.com/YOUR_USERNAME/agent-tooling-setup.git
+git clone https://github.com/jesposito/agent-tooling-setup.git
 cd agent-tooling-setup
 
 # Make installer executable

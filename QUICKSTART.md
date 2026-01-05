@@ -4,7 +4,7 @@
 
 ```bash
 # 1. Download installer
-curl -fsSL https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/agent-tooling-setup/main/install.sh -o install.sh
+curl -fsSL https://raw.githubusercontent.com/jesposito/agent-tooling-setup/main/install.sh -o install.sh
 
 # 2. Review it (IMPORTANT!)
 cat install.sh
@@ -146,7 +146,7 @@ type = epic expand down depth *
 
 ```bash
 # Download uninstaller
-curl -fsSL https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/agent-tooling-setup/main/uninstall.sh -o uninstall.sh
+curl -fsSL https://raw.githubusercontent.com/jesposito/agent-tooling-setup/main/uninstall.sh -o uninstall.sh
 chmod +x uninstall.sh
 
 # Review and run
