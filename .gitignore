@@ -85,8 +85,16 @@ agent-tooling-install.log
 # Dogfooding workspace (don't commit)
 /agent-tooling-setup/
 
-# Mem0 API key - DO NOT COMMIT
-test_mem0*.py
+# Inception/dogfooding scripts - DO NOT COMMIT
+# (Helper scripts used during development sessions)
+test_*.py
+use_*.py
+document_*.py
+*_session.py
+helper_*.py
+temp_*.py
+
+# API keys and secrets - DO NOT COMMIT
 .env
 .env.local
 .env.*.local

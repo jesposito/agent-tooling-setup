@@ -58,12 +58,22 @@ client.add(
 
 **When ending a work session**, you MUST complete ALL steps below. Work is NOT complete until `git push` succeeds.
 
+**CRITICAL: What NOT to Commit**
+- ❌ Helper scripts used during development (`test_*.py`, `use_*.py`, etc.)
+- ❌ Temporary Python/shell scripts created for the session
+- ❌ API keys or `.env` files with secrets
+- ❌ Dogfooding/inception work (tools used to improve the tools)
+- ✅ ONLY commit the actual project improvements (code, docs, tests)
+
 **MANDATORY WORKFLOW:**
 
 1. **File issues for remaining work** - Create issues for anything that needs follow-up
 2. **Run quality gates** (if code changed) - Tests, linters, builds
-3. **Update issue status** - Close finished work, update in-progress items
-4. **PUSH TO REMOTE** - This is MANDATORY:
+3. **Review what's being committed** - Check `git status` and `git diff --staged`
+   - Remove any helper/temp scripts: `git restore --staged <file>`
+   - Verify no API keys or secrets
+4. **Update issue status** - Close finished work, update in-progress items
+5. **PUSH TO REMOTE** - This is MANDATORY:
    ```bash
    git pull --rebase
    bd sync
