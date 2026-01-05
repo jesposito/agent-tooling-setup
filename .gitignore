@@ -78,3 +78,5 @@ agent-tooling-install.log
 .agent-tools/
 
 # === End Agent Tooling ===
+# Dogfooding workspace (don't commit)
+/agent-tooling-setup/
