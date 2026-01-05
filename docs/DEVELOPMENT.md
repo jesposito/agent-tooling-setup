@@ -10,14 +10,14 @@ This project creates the agent tooling setup itself.
 - [x] Auto-gitignore management (update_gitignore function)
 - [x] Diagnostic & health check system (agent-tools-doctor.sh)
 - [x] Safe update system (agent-tools-update.sh)
-- [x] Dual installation modes documentation (INSTALLATION-MODES.md)
-- [x] Windows compatibility notes (WINDOWS-NOTES.md)
+- [x] Dual installation modes documentation (docs/guides/INSTALLATION-MODES.md)
+- [x] Windows compatibility notes (docs/guides/WINDOWS-NOTES.md)
 - [x] **Global installation mode implementation** (install-global.sh - complete)
 - [x] **Project initialization for global mode** (agent-tools init command)
 - [x] **Migration tools** (migrate-mode.sh - to-global, to-local)
-- [x] **Comprehensive documentation updates** (README.md, QUICKSTART.md)
-- [x] **Testing checklist** (TESTING-CHECKLIST.md)
-- [x] **Changelog** (CHANGELOG.md with version history)
+- [x] **Comprehensive documentation updates** (README.md, docs/guides/QUICKSTART.md)
+- [x] **Testing checklist** (docs/development/TESTING-CHECKLIST.md)
+- [x] **Changelog** (docs/CHANGELOG.md with version history)
 - [x] **Enhanced .gitignore** (migration artifacts, user configs)
 
 ### In Progress 🔄
@@ -68,9 +68,9 @@ On this Windows machine:
 
 3. **Enhanced Documentation**
    - Updated [README.md](../README.md) with both installation modes
-   - Updated [QUICKSTART.md](../QUICKSTART.md) with unified CLI commands
-   - Created [TESTING-CHECKLIST.md](../TESTING-CHECKLIST.md) - comprehensive testing guide
-   - Created [CHANGELOG.md](../CHANGELOG.md) - full version history
+   - Updated [docs/guides/QUICKSTART.md](../docs/guides/QUICKSTART.md) with unified CLI commands
+   - Created [docs/development/TESTING-CHECKLIST.md](../docs/development/TESTING-CHECKLIST.md) - comprehensive testing guide
+   - Created [docs/CHANGELOG.md](../docs/CHANGELOG.md) - full version history
 
 4. **Improved Robustness**
    - Windows compatibility fixes in diagnostic script
@@ -81,8 +81,8 @@ On this Windows machine:
 
 - **Lines of code added**: ~3,500+ lines
 - **New scripts**: 1 (migrate-mode.sh ~600 lines)
-- **Documentation files created**: 2 (TESTING-CHECKLIST.md, CHANGELOG.md)
-- **Documentation files updated**: 4 (README.md, QUICKSTART.md, docs/DEVELOPMENT.md, .gitignore)
+- **Documentation files created**: 2 (docs/development/TESTING-CHECKLIST.md, docs/CHANGELOG.md)
+- **Documentation files updated**: 4 (README.md, docs/guides/QUICKSTART.md, docs/DEVELOPMENT.md, .gitignore)
 - **Scripts enhanced**: 2 (install-global.sh created, agent-tools-doctor.sh fixed)
 - **Commits**: 3 total this session
 - **Platform compatibility**: Improved (Windows fallbacks added)

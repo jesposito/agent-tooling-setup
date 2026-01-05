@@ -36,7 +36,7 @@
 1. **Test on WSL** - The tools should work there
 2. **Windows fallback mode** - Skip Beads/Perles, use only Empirica
 3. **Better platform detection** - Detect Windows early, warn users
-4. **Alternative task tracking** - TASKS.md instead of Beads for Windows users
+4. **Alternative task tracking** - docs/development/TASKS.md instead of Beads for Windows users
 
 ## Ideas for Improvement
 - [ ] Interactive installation wizard (asks which tools to install)

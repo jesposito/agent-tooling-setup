@@ -307,17 +307,17 @@ Test with `.agent-tools.yaml` configuration:
   - [ ] Links work
   - [ ] Examples correct
 
-- [ ] **QUICKSTART.md**
+- [ ] **docs/guides/QUICKSTART.md**
   - [ ] Quick start works end-to-end
   - [ ] Commands accurate
   - [ ] Examples work
 
-- [ ] **INSTALLATION-MODES.md**
+- [ ] **docs/guides/INSTALLATION-MODES.md**
   - [ ] Comparison table accurate
   - [ ] Migration instructions work
   - [ ] FAQ answers common questions
 
-- [ ] **WINDOWS-NOTES.md**
+- [ ] **docs/guides/WINDOWS-NOTES.md**
   - [ ] Compatibility matrix accurate
   - [ ] Workarounds documented
   - [ ] WSL recommendation clear
@@ -393,7 +393,7 @@ Test with `.agent-tools.yaml` configuration:
 3. [ ] Create first task with `bd create`
 4. [ ] Start session with `empirica session-create`
 5. [ ] View board with `perles`
-6. [ ] Complete workflow from QUICKSTART.md
+6. [ ] Complete workflow from docs/guides/QUICKSTART.md
 7. [ ] Run diagnostic: `./agent-tools-doctor.sh`
 
 ### Scenario 2: New User, Global Mode
@@ -402,7 +402,7 @@ Test with `.agent-tools.yaml` configuration:
 2. [ ] Verify `agent-tools` in PATH
 3. [ ] `cd` to test repo
 4. [ ] Run `agent-tools init`
-5. [ ] Complete workflow from QUICKSTART.md
+5. [ ] Complete workflow from docs/guides/QUICKSTART.md
 6. [ ] `cd` to second repo
 7. [ ] Run `agent-tools init`
 8. [ ] Verify shared tools work
@@ -483,7 +483,7 @@ Before releasing a new version:
 
 - [ ] All tests pass
 - [ ] Documentation updated
-- [ ] CHANGELOG.md updated
+- [ ] docs/CHANGELOG.md updated
 - [ ] Version numbers bumped
 - [ ] GitHub release created
 - [ ] Installation scripts tested from raw.githubusercontent.com

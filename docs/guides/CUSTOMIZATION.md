@@ -73,7 +73,7 @@ Must include:
    - `README.md` - Project overview
    - `docs/API.md` - API endpoints and contracts
    - `docs/DEPLOYMENT.md` - Deployment procedures
-   - `CHANGELOG.md` - Recent changes
+   - `docs/CHANGELOG.md` - Recent changes
 ```
 
 ### Section 4: Discovery & Design First
@@ -169,7 +169,7 @@ Follow conventional commits:
 ### PR Process
 1. Create feature branch
 2. Implement with tests
-3. Update CHANGELOG.md
+3. Update docs/CHANGELOG.md
 4. Submit PR with template
 5. Require 1 approval minimum
 

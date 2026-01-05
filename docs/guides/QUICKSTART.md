@@ -19,7 +19,7 @@ Done! See [CLAUDE_CODE.md](CLAUDE_CODE.md) for workflow examples. Otherwise, con
 1. **Global Mode** (Recommended) - Install once, use everywhere
 2. **Per-Project Mode** - Traditional self-contained install
 
-See [INSTALLATION-MODES.md](INSTALLATION-MODES.md) for detailed comparison.
+See [docs/guides/INSTALLATION-MODES.md](docs/guides/INSTALLATION-MODES.md) for detailed comparison.
 
 ### Global Installation (Recommended - 60 seconds)
 

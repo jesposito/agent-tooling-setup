@@ -75,8 +75,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Pre-commit review capability
 
 #### Documentation
-- **INSTALLATION-MODES.md** - Detailed comparison of global vs per-project modes
-- **WINDOWS-NOTES.md** - Windows compatibility guide
+- **docs/guides/INSTALLATION-MODES.md** - Detailed comparison of global vs per-project modes
+- **docs/guides/WINDOWS-NOTES.md** - Windows compatibility guide
   - Compatibility matrix (native vs WSL)
   - Recommended setups
   - Tool-specific limitations
@@ -87,7 +87,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Workflow scenarios
   - Compatibility matrix
 - **ENHANCEMENTS-SUMMARY.md** - Feature overview and benefits
-- **TESTING-CHECKLIST.md** - Comprehensive testing guide
+- **docs/development/TESTING-CHECKLIST.md** - Comprehensive testing guide
   - Platform compatibility tests
   - Installation method tests
   - Migration tests
@@ -125,7 +125,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Documentation Updates
 - **README.md** - Updated with global mode, optional tools, diagnostics
-- **QUICKSTART.md** - Added global mode instructions and diagnostics commands
+- **docs/guides/QUICKSTART.md** - Added global mode instructions and diagnostics commands
 - **Requirements section** - Updated with modern Python versions and platform compatibility
 
 #### Test Improvements
@@ -167,9 +167,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - `.gitattributes` - Beads merge strategy
 - **Documentation**
   - README.md with workflow examples
-  - QUICKSTART.md with 5-minute guide
+  - docs/guides/QUICKSTART.md with 5-minute guide
   - CLAUDE_CODE.md for Claude Code integration
-  - CUSTOMIZATION.md for template adaptation
+  - docs/guides/CUSTOMIZATION.md for template adaptation
 - **GitHub Actions** - Test workflow for CI
 - **Claude Code integration** - Direct installation support
 
