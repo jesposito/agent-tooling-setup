@@ -131,7 +131,7 @@ git push
 
 - **Beads**: https://github.com/steveyegge/beads
 - **Perles**: https://github.com/zjrosen/perles
-- **Empirica**: https://pypi.org/project/empirica-app/
+- **Empirica**: https://github.com/Nubaeon/empirica
 
 ## Features
 
@@ -228,7 +228,7 @@ git rm -r .beads .claude/CLAUDE.md AGENTS.md .gitattributes
 
 # Uninstall tools (optional)
 brew uninstall bd perles  # macOS
-pip uninstall empirica-app
+pip uninstall empirica
 ```
 
 ## Troubleshooting
@@ -257,10 +257,10 @@ export PATH="$HOME/.local/bin:$PATH"
 
 ### Empirica install fails
 
-Install Python dependencies:
+Install from GitHub:
 
 ```bash
-pip3 install --user empirica-app
+pip3 install --user git+https://github.com/Nubaeon/empirica.git
 ```
 
 ## Contributing

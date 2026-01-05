@@ -144,7 +144,7 @@ type = epic expand down depth *
 | Issue | Solution |
 |-------|----------|
 | Command not found | Add to PATH: `export PATH="$HOME/go/bin:$HOME/.local/bin:$PATH"` |
-| Empirica fails | Install: `pip3 install --user empirica-app` |
+| Empirica fails | Install: `pip3 install --user git+https://github.com/Nubaeon/empirica.git` |
 | Beads not syncing | Run: `bd doctor --fix` |
 | Perles won't start | Check: `bd version` (need v0.41.0+) |
 

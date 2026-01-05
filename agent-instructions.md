@@ -503,7 +503,7 @@ All new components go in `components/` unless feature-specific.
 
 - **Beads Documentation**: https://github.com/steveyegge/beads
 - **Perles Documentation**: https://github.com/zjrosen/perles
-- **Empirica Documentation**: https://pypi.org/project/empirica-app/
+- **Empirica Documentation**: https://github.com/Nubaeon/empirica
 
 <!-- [CUSTOMIZE] Add links to your project's resources -->
 <!--

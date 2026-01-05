@@ -51,6 +51,7 @@ install_beads() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
         # macOS
         if check_installed brew; then
+            brew tap steveyegge/beads 2>/dev/null || true
             brew install steveyegge/beads/bd || {
                 warn "Homebrew install failed, trying install script..."
                 curl -fsSL https://raw.githubusercontent.com/steveyegge/beads/main/scripts/install.sh | bash
@@ -63,10 +64,25 @@ install_beads() {
         curl -fsSL https://raw.githubusercontent.com/steveyegge/beads/main/scripts/install.sh | bash
     fi
 
+    # If still not installed, try Go as a fallback
+    if ! check_installed bd && check_installed go; then
+        warn "Trying Go installation as fallback..."
+        go install github.com/steveyegge/beads/cmd/bd@latest
+    fi
+
+    # If still not installed, try npm as a fallback
+    if ! check_installed bd && check_installed npm; then
+        warn "Trying npm installation as fallback..."
+        npm install -g @beads/bd
+    fi
+
     if check_installed bd; then
         success "Beads installed successfully"
     else
         error "Failed to install Beads. Please install manually from $REPO_URL"
+        echo "  Try: go install github.com/steveyegge/beads/cmd/bd@latest"
+        echo "  Or: npm install -g @beads/bd"
+        exit 1
     fi
 }
 
@@ -83,7 +99,7 @@ install_perles() {
     if [[ "$OSTYPE" == "darwin"* ]]; then
         # macOS
         if check_installed brew; then
-            brew tap zjrosen/perles
+            brew tap zjrosen/perles 2>/dev/null || true
             brew install perles || {
                 warn "Homebrew install failed, trying install script..."
                 curl -sSL https://raw.githubusercontent.com/zjrosen/perles/main/install.sh | bash
@@ -96,10 +112,17 @@ install_perles() {
         curl -sSL https://raw.githubusercontent.com/zjrosen/perles/main/install.sh | bash
     fi
 
+    # If still not installed, try Go as a fallback (requires Go 1.21+)
+    if ! check_installed perles && check_installed go; then
+        warn "Trying Go installation as fallback..."
+        go install github.com/zjrosen/perles@latest
+    fi
+
     if check_installed perles; then
         success "Perles installed successfully"
     else
         warn "Failed to install Perles. You can install manually from $PERLES_URL"
+        warn "  Try: go install github.com/zjrosen/perles@latest"
         warn "Continuing without Perles (optional component)..."
     fi
 }
@@ -114,9 +137,9 @@ install_empirica() {
     info "Installing Empirica..."
 
     if check_installed pip3; then
-        pip3 install --user empirica-app || pip install --user empirica-app || {
+        pip3 install --user git+https://github.com/Nubaeon/empirica.git || pip install --user git+https://github.com/Nubaeon/empirica.git || {
             warn "Failed to install Empirica via pip"
-            warn "You can install manually: pip install empirica-app"
+            warn "You can install manually: pip install git+https://github.com/Nubaeon/empirica.git"
             warn "Continuing without Empirica (optional component)..."
             return
         }
