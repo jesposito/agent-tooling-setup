@@ -157,6 +157,12 @@ init_beads() {
         return
     fi
 
+    if ! check_installed bd; then
+        warn "Beads (bd) not installed, skipping initialization"
+        warn "Run 'bd init' manually after installing Beads"
+        return
+    fi
+
     info "Initializing Beads..."
     bd init || error "Failed to initialize Beads"
     success "Beads initialized"
