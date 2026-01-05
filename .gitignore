@@ -19,7 +19,9 @@ agent-tools.yaml
 # Environment variables (API keys, secrets)
 *.env
 *.env.*
-.env*
+.env
+.env.*
+!.env.template
 
 # Testing and temporary files
 test-temp/
@@ -51,6 +53,7 @@ desktop.ini
 *~
 *.bak
 
+
 # === Agent Tooling - Auto-managed (DO NOT EDIT) ===
 # Installation artifacts
 .analysis-workspace/
@@ -78,5 +81,12 @@ agent-tooling-install.log
 .agent-tools/
 
 # === End Agent Tooling ===
+
 # Dogfooding workspace (don't commit)
 /agent-tooling-setup/
+
+# Mem0 API key - DO NOT COMMIT
+test_mem0*.py
+.env
+.env.local
+.env.*.local
