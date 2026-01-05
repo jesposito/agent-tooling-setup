@@ -1,5 +1,17 @@
 # Quick Start Guide
 
+## 🤖 Using Claude Code? (10 seconds)
+
+If you have [Claude Code](https://claude.ai/claude-code) installed, just ask:
+
+```
+Install the agent tooling setup from https://github.com/jesposito/agent-tooling-setup
+```
+
+Done! See [CLAUDE_CODE.md](CLAUDE_CODE.md) for workflow examples. Otherwise, continue below for manual installation.
+
+---
+
 ## Installation (60 seconds)
 
 ```bash
