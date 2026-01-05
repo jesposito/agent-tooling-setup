@@ -1,0 +1,61 @@
+name: Test Installation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-install:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Make installer executable
+      run: chmod +x install.sh uninstall.sh
+
+    - name: Create test git repository
+      run: |
+        mkdir -p /tmp/test-repo
+        cd /tmp/test-repo
+        git init
+        git config user.email "test@example.com"
+        git config user.name "Test User"
+
+    - name: Run installer (config only)
+      run: |
+        cd /tmp/test-repo
+        ${{ github.workspace }}/install.sh --skip-install
+
+    - name: Verify installation
+      run: |
+        cd /tmp/test-repo
+        test -f .claude/CLAUDE.md || exit 1
+        test -f AGENTS.md || exit 1
+        test -d .beads || exit 1
+        echo "✓ All files created successfully"
+
+    - name: Test with agent-instructions
+      run: |
+        rm -rf /tmp/test-repo-2
+        mkdir -p /tmp/test-repo-2
+        cd /tmp/test-repo-2
+        git init
+        git config user.email "test@example.com"
+        git config user.name "Test User"
+        ${{ github.workspace }}/install.sh --skip-install --with-agent-instructions
+        test -f agent-instructions.md || exit 1
+        echo "✓ agent-instructions.md created"
+
+    - name: Test uninstaller
+      run: |
+        cd /tmp/test-repo
+        ${{ github.workspace }}/uninstall.sh --dry-run
+        echo "✓ Uninstaller dry-run successful"
